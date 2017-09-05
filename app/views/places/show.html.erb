@@ -34,9 +34,9 @@
 
   <h1> Photos </h1>
 
-  <%= @place.photos.each do |photo| %>
+  <% @place.photos.each do |photo| %>
     <% if photo.present? %>
-      <%= photo.picture %>
+      <%= image_tag photo.picture %>
       <%= photo.caption %>
     <% end %>
   <% end %>
