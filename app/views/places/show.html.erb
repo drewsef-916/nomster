@@ -31,15 +31,49 @@
     <div id="map"></div>
   <% end %>
 
-<br />
 
-  <div class="float-right">
-    <% if current_user && current_user == @place.user %>
-      <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-      <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger' %>
+  <h1> Photos </h1>
+
+  <%= @place.photos.each do |photo| %>
+    <% if photo.present? %>
+      <%= photo.picture %>
+      <%= photo.caption %>
     <% end %>
+  <% end %>
+
+
+  <!-- Button trigger modal photo -->
+
+<button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#myPhotoModal">
+  Add a photo
+</button>
+
+<!-- Modal photo-->
+<div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+          <%= f.input :picture %>
+          <%= f.input :caption %>
+      </div>
+      <div class="modal-footer">
+          <%= f.submit "Add a photo", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+<br />
 
 <div class="clear"></div>
 
@@ -69,10 +103,14 @@
   </div>
 </div>
 
+<br />
+<br />
+<br />
+
 <div class="col-10 offset-1">
 <h1 class="float-left"> Comments </h1>
  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#myModal">
   Add a comment
 </button>
 </div>
@@ -93,6 +131,24 @@
 <% end %>
 </div>
 
+<div class="clear"></div>
+<br />
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <% if current_user && current_user == @place.user %>
+        <%= link_to 'Edit Place', edit_place_path(@place), class: 'btn btn-info btn-block' %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <% if current_user && current_user == @place.user %>
+        <%= link_to 'Delete Place', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-danger btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 
