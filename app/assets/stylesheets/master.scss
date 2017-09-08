@@ -38,7 +38,7 @@ body {
 .pagination {
   font-family: 'quicksandbold', sans-serif;
   font-size: 20px;
-  position: fixed;
+  position: static;
   bottom: 0;
   right: 0.5;
   text-align: left;
@@ -78,6 +78,11 @@ blockquote:before {
 }
 blockquote p {
   display: inline;
+}
+
+img {
+  width: 400px;
+  height: auto;
 }
 
 

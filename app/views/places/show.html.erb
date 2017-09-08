@@ -32,21 +32,24 @@
   <% end %>
 
 
-  <h1> Photos </h1>
-
-  <% @place.photos.each do |photo| %>
-    <% if photo.present? %>
-      <%= image_tag photo.picture %>
-      <%= photo.caption %>
-    <% end %>
-  <% end %>
-
-
   <!-- Button trigger modal photo -->
 
 <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#myPhotoModal">
   Add a photo
 </button>
+
+  <h1> Photos </h1>
+  <div class="col-8 offset-2">
+  <% @place.photos.each do |photo| %>
+ 
+    <% if photo.present? %>
+      <%= image_tag photo.picture %>
+      <%= photo.caption %>
+      <small> <%= photo.user.email %> </small>
+      <br />
+    <% end %>
+  <% end %>
+  </div>
 
 <!-- Modal photo-->
 <div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
