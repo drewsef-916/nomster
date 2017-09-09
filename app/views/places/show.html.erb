@@ -34,9 +34,11 @@
 
   <!-- Button trigger modal photo -->
 
+<% if current_user && current_user == @place.user %>
 <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#myPhotoModal">
   Add a photo
 </button>
+<% end %>
 
   <h1> Photos </h1>
   <div class="col-8 offset-2">
@@ -45,7 +47,7 @@
     <% if photo.present? %>
       <%= image_tag photo.picture %>
       <%= photo.caption %>
-      <small> <%= photo.user.email %> </small>
+     
       <br />
     <% end %>
   <% end %>
@@ -113,9 +115,11 @@
 <div class="col-10 offset-1">
 <h1 class="float-left"> Comments </h1>
  <!-- Button trigger modal -->
+<% if current_user && current_user == @place.user %>
 <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#myModal">
   Add a comment
 </button>
+<% end %>
 </div>
 
 <div class="clear"></div>

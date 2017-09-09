@@ -26,13 +26,19 @@
     <div class="col-8 offset-2">
       <%= image_tag place.photos.last.picture %>
       <%= place.photos.last.caption %>
-      <small> <%= place.photos.last.user.email %> </small>
+    
   <% end %>
     </div>
   </div>
 <% end %>
 
+<div class="clear"> </div>
+<br />
+<br />
 
-<%= will_paginate @places, :page_links => false, previous_label: "Let's take a step back", next_label: "Onward" %>
-
+<footer class="footer">
+  <div class="container">
+    <%= will_paginate @places, :page_links => false, previous_label: "Let's take a step back", next_label: "Onward" %>
+  </div>
+</footer>
 
