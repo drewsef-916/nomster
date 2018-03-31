@@ -76,6 +76,9 @@ gem 'carrierwave', '~> 1.0'
 
 gem 'fog-aws'
 
+gem "roo", "~> 2.7.0"
+
+
 
 
 

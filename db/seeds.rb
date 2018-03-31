@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+
+#CSV.foreach(Rails.root.join("Puris_PPI_Ripptein_B.csv")) do |row|
+#  puts row[0]
+#end
+
+
+csv_text = File.read(Rails.root.join("Puris_PPI_Ripptein_B.csv"))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  puts row.to_hash
+end
